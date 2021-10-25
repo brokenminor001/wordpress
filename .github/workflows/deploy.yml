@@ -16,6 +16,6 @@ jobs:
       - run: echo "$" > "$HOME/.ssh/test17"
       - run: chmod 600 "$HOME/.ssh/test17"
       # Build
-      - run: npm ci
+      # - run: npm ci
       # Deplo
       - run: rsync -e "ssh -p 20022 -i $HOME/.ssh/test17 -o StrictHostKeyChecking=no" --archive --compress --delete . 104.248.244.28:/var/reserv/site
