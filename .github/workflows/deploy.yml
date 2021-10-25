@@ -13,9 +13,9 @@ jobs:
       # Setup key
       - run: set -eu
       - run: mkdir "$HOME/.ssh"
-      - run: echo "$" > "$HOME/.ssh/KEY"
-      - run: chmod 600 "$HOME/.ssh/KEY"
+      - run: echo "$" > "$HOME/.ssh/keykey"
+      - run: chmod 600 "$HOME/.ssh/keykey"
       # Build
       # - run: npm ci
       # Deplo
-      - run: rsync -e "ssh -i $HOME/.ssh/KEY -o StrictHostKeyChecking=no" --archive --compress --delete . 104.248.244.28:/var/reserv/site
+      - run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . 104.248.244.28:/var/reserv/site
