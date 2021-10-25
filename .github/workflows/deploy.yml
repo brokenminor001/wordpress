@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Setup key
+      - run: set -eu
+      - run: mkdir "$HOME/.ssh"
+      - run: echo "$" > "$HOME/.ssh/id_rsa"
+      - run: chmod 600 "$HOME/.ssh/id_rsa"
+      # Build
+      - run: npm ci
+      - run: npm run build
+      # Deploy
+      - run: rsync -e "ssh -p 20022 -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no" --archive --compress --delete . 104.248.244.28:/var/reserv/site
