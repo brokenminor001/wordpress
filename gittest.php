@@ -1,4 +1,3 @@
-<?php
+<?php 
+echo "some code";
 
-
-echo "good";
